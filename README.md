@@ -32,6 +32,12 @@ $npm start
 
 2. Pagination  
 
+## Working on--
+ 1. Delete 
+ 
+ 3. Edit 
+
+
 
 
 
