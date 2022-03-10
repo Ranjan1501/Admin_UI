@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+  text-align: center;
+}
+.container input {
+  width: 65%;
+}
+
+.table {
+  width: 65%;
+  margin: auto;
+
+  /* display: flex; */
+}
+.table tr {
+  width: 80%;
+  border: 1px solid grey;
+}
+.table tr:hover {
+  background-color: lightgray;
+}
+.table tr th {
+  width: 28%;
+  border: 1px solid grey; 
+}
+.pagination {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap: 2%;
+  text-decoration: none;
+  list-style: none;
+  margin: auto;
+  cursor: pointer;
+}
+.paginationBttns {
+  width: 50px;
+  background-color: #42c2ff;
+}
+.btn {
+  display: flex;
+  gap: 0.3%;
+}
