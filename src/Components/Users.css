@@ -21,7 +21,7 @@
 }
 .table tr th {
   width: 28%;
-  border: 1px solid grey; 
+  border: 1px solid grey;
 }
 .pagination {
   width: 100%;
@@ -32,11 +32,13 @@
   list-style: none;
   margin: auto;
   cursor: pointer;
+  /* background-color: #42c2ff; */
 }
-.paginationBttns {
+/* .paginationBttns {
   width: 50px;
   background-color: #42c2ff;
-}
+  color: red;
+} */
 .btn {
   display: flex;
   gap: 0.3%;

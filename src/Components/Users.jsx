@@ -2,23 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./Users.css";
 import ReactPaginate from "react-paginate";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { useParams } from "react-router-dom";
+import { Pagination } from "antd";
+import "antd/dist/antd.css";
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [pageCount, setPageCount] = useState(0);
-  const { id } = useParams();
+  console.log("Page Count:", pageCount);
+  // const { id } = useParams();
   const itemPerPage = 10;
-  const pageVisited = pageCount * itemPerPage;
+  let pageVisited = pageCount * itemPerPage;
+  // pageVisited = +pageVisited;
+
   const totalPages = Math.ceil(users.length / itemPerPage);
-  const pageChange = (page) => {
-    setPageCount(page);
+  const pageChange = ({ selected }) => {
+    setPageCount(selected);
   };
 
   useEffect(() => {
     getUsersDetails();
-    return pageChange;
   }, []);
   const getUsersDetails = () => {
     fetch(
@@ -38,6 +41,7 @@ function Users() {
     setUsers(users.filter((e) => e.id !== id));
   };
   const handleEdit = () => {};
+  console.log("PageVisited: ", pageVisited);
   return (
     <div className="container">
       <br />
@@ -69,6 +73,7 @@ function Users() {
             ) {
               return e;
             }
+            return e;
           })
           .slice(pageVisited, pageVisited + itemPerPage)
           .map((e) => (
@@ -99,7 +104,7 @@ function Users() {
         nextLabel={"Next"}
         pageCount={totalPages}
         onPageChange={pageChange}
-        containerClassName={"paginationBttns"}
+        containerClassName={<Pagination />}
       />
     </div>
   );
