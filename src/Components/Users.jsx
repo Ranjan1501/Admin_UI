@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 function Users() {
   const [users, setUsers] = useState([]);
-  const [searchData, setSearchData] = useState({});
+  const [searchData, setSearchData] = useState("");
   const [pageCount, setPageCount] = useState(0);
   const { id } = useParams();
   const itemPerPage = 10;
