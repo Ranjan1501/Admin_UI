@@ -61,11 +61,15 @@ function Users() {
 
         {users
           .filter((e) => {
-            if (e.name.includes(searchData)) {
+            if (searchData === "") return e;
+            else if (
+              e.name.includes(searchData) ||
+              e.email.includes(searchData) ||
+              e.role.includes(searchData)
+            ) {
               return e;
             }
-            if (e.email.includes(searchData)) return e;
-            if (e.role.includes(searchData)) return e;
+            
           })
           .slice(pageVisited, pageVisited + itemPerPage)
           .map((e) => (
