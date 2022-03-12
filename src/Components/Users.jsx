@@ -5,15 +5,13 @@ import ReactPaginate from "react-paginate";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { Pagination } from "antd";
 
-// import { useParams } from "react-router-dom";
-
 function Users() {
   const [users, setUsers] = useState([]);
   const [searchData, setSearchData] = useState("");
   // Pagination Start
   const [pageCount, setPageCount] = useState(0);
   console.log("Page Count:", pageCount);
-  // const { id } = useParams();
+
   const itemPerPage = 10;
   let pageVisited = pageCount * itemPerPage;
 
@@ -42,7 +40,10 @@ function Users() {
   };
 
   const handleDelete = (id) => {
-    setUsers(users.filter((e) => e.id !== users.id));
+    let filteredItem = users.filter((ele, ind) => {
+      return ind !== id;
+    });
+    setUsers(filteredItem);
   };
   const handleEdit = () => {};
   console.log("PageVisited: ", pageVisited);
@@ -79,7 +80,7 @@ function Users() {
             }
           })
           .slice(pageVisited, pageVisited + itemPerPage)
-          .map((e) => (
+          .map((e, ind) => (
             <tr key={e.id}>
               <input type="checkbox" />
 
@@ -91,7 +92,7 @@ function Users() {
                   {" "}
                   <AiFillEdit />{" "}
                 </button>
-                <button onClick={handleDelete}>
+                <button onClick={() => handleDelete(ind)}>
                   {" "}
                   <AiFillDelete />{" "}
                 </button>
