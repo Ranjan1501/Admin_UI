@@ -73,7 +73,6 @@ function Users() {
             ) {
               return e;
             }
-            return e;
           })
           .slice(pageVisited, pageVisited + itemPerPage)
           .map((e) => (
