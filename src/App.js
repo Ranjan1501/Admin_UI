@@ -1,10 +1,16 @@
 import "./App.css";
 import Users from "./Components/Users";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Users />
+      <div>
+        <Users />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }
