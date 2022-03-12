@@ -39,12 +39,16 @@ function Users() {
       });
   };
 
-  const handleDelete = (id) => {
-    let filteredItem = users.filter((ele, ind) => {
-      return ind !== id;
+  // Delete Data by Click
+  const handleDelete = (ind) => {
+    let filteredItem = users.filter((ele) => {
+      // same thing filterOut object.id !==id
+      return ele.id !== ind;
     });
     setUsers(filteredItem);
   };
+
+  // Edit Data by Click
   const handleEdit = () => {};
   console.log("PageVisited: ", pageVisited);
   return (
@@ -69,6 +73,7 @@ function Users() {
         </tr>
 
         {users
+          //Search Data by Input
           .filter((e) => {
             if (searchData === "") return e;
             else if (
@@ -92,7 +97,7 @@ function Users() {
                   {" "}
                   <AiFillEdit />{" "}
                 </button>
-                <button onClick={() => handleDelete(ind)}>
+                <button onClick={() => handleDelete(e.id)}>
                   {" "}
                   <AiFillDelete />{" "}
                 </button>
@@ -104,6 +109,7 @@ function Users() {
       <br />
 
       {/* pagination */}
+
       <ReactPaginate
         className="pagination"
         previousLabel={"Prev"}
