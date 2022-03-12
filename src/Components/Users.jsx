@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./Users.css";
+import "antd/dist/antd.css";
 import ReactPaginate from "react-paginate";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { Pagination } from "antd";
-import "antd/dist/antd.css";
+
+// import { useParams } from "react-router-dom";
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [searchData, setSearchData] = useState("");
+  // Pagination Start
   const [pageCount, setPageCount] = useState(0);
   console.log("Page Count:", pageCount);
   // const { id } = useParams();
   const itemPerPage = 10;
   let pageVisited = pageCount * itemPerPage;
-  // pageVisited = +pageVisited;
 
   const totalPages = Math.ceil(users.length / itemPerPage);
   const pageChange = ({ selected }) => {
     setPageCount(selected);
   };
+
+  // pagination end
 
   useEffect(() => {
     getUsersDetails();
@@ -38,7 +42,7 @@ function Users() {
   };
 
   const handleDelete = (id) => {
-    setUsers(users.filter((e) => e.id !== id));
+    setUsers(users.filter((e) => e.id !== users.id));
   };
   const handleEdit = () => {};
   console.log("PageVisited: ", pageVisited);
@@ -97,6 +101,8 @@ function Users() {
       </table>
       <br />
       <br />
+
+      {/* pagination */}
       <ReactPaginate
         className="pagination"
         previousLabel={"Prev"}
