@@ -8,9 +8,9 @@ function App() {
       <div>
         <Users />
       </div>
-      <div>
+      {/* <div>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 }
