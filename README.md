@@ -16,6 +16,7 @@ cd admin_ui
 $npm start
 
 ## Teach Stack-
+
 1.React js 
 
 2. javaScript 
@@ -32,10 +33,13 @@ $npm start
 
 2. Pagination  
 
-## Working on--
- 1. Delete 
+3. Delete Users Details by Selecting particular User 
+
+
+
+## Working on --
  
- 3. Edit 
+ 1.  Edit  (Edit User Details whatever field you like to)
 
 
 
