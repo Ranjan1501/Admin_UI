@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "./Users.css";
+import "./UsersList.css";
 import "antd/dist/antd.css";
 import ReactPaginate from "react-paginate";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { Pagination } from "antd";
 
-function Users() {
+function UsersList() {
   const [users, setUsers] = useState([]);
-  const [searchData, setSearchData] = useState("");
+  const [searchUser, setSearchUser] = useState("");
 
   // Pagination Start
   const [pageCount, setPageCount] = useState(0);
@@ -40,17 +40,17 @@ function Users() {
       });
   };
 
-  // Delete Data by Click
-  const handleDelete = (ind) => {
-    let filteredItem = users.filter((ele) => {
+  // Delete User data onClick
+  const deleteUser = (selectedUser) => {
+    let userAfterDeletion = users.filter((user) => {
       // same thing filterOut object.id !==id
-      return ele.id !== ind;
+      return user.id !== selectedUser;
     });
-    setUsers(filteredItem);
+    setUsers(userAfterDeletion);
   };
 
   // Edit Data by Click
-  const handleEdit = () => {};
+  const editUserDetails = () => {};
   console.log("PageVisited: ", pageVisited);
   return (
     <div className="container">
@@ -59,7 +59,7 @@ function Users() {
         type="text"
         name="name"
         placeholder=" Search by any field "
-        onChange={(e) => setSearchData(e.target.value)}
+        onChange={(e) => setSearchUser(e.target.value)}
       />
 
       <table className="table">
@@ -75,30 +75,31 @@ function Users() {
 
         {users
           //Search Data by Input
-          .filter((e) => {
-            if (searchData === "") return e;
+
+          .filter((user) => {
+            if (searchUser === "") return user;
             else if (
-              e.name.includes(searchData) ||
-              e.email.includes(searchData) ||
-              e.role.includes(searchData)
+              user.name.includes(searchUser) ||
+              user.email.includes(searchUser) ||
+              user.role.includes(searchUser)
             ) {
-              return e;
+              return user;
             }
           })
           .slice(pageVisited, pageVisited + itemPerPage)
-          .map((e, ind) => (
-            <tr key={e.id}>
+          .map((user) => (
+            <tr key={user.id}>
               <input type="checkbox" />
 
-              <td> {e.name} </td>
-              <td> {e.email} </td>
-              <td> {e.role} </td>
+              <td> {user.name} </td>
+              <td> {user.email} </td>
+              <td> {user.role} </td>
               <td className="btn">
-                <button onClick={handleEdit}>
+                <button onClick={editUserDetails}>
                   {" "}
                   <AiFillEdit />{" "}
                 </button>
-                <button onClick={() => handleDelete(e.id)}>
+                <button onClick={() => deleteUser(user.id)}>
                   {" "}
                   <AiFillDelete />{" "}
                 </button>
@@ -123,4 +124,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default UsersList;
