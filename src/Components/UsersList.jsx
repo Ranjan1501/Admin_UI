@@ -11,7 +11,7 @@ function UsersList() {
 
   // Pagination Start
   const [pageCount, setPageCount] = useState(0);
-  console.log("Page Count:", pageCount);
+  // console.log("Page Count:", pageCount);
 
   const itemPerPage = 10;
   let pageVisited = pageCount * itemPerPage;
@@ -33,9 +33,9 @@ function UsersList() {
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
-        console.log(data);
+        // console.log(data);
       })
-      // error handling
+      // error
       .catch((err) => {
         console.log("Error:", err);
       });
@@ -44,16 +44,13 @@ function UsersList() {
   // Delete User data onClick
   const deleteUser = (selectedUser) => {
     let userAfterDeletion = users.filter((user) => {
-      // same thing filterOut object.id !==id
       return user.id !== selectedUser;
     });
     setUsers(userAfterDeletion);
   };
 
   // Edit Data by Click
-  const editUserDetails = () => {
-    
-  };
+  const editUserDetails = () => {};
   console.log("PageVisited: ", pageVisited);
   return (
     <div className="container">
