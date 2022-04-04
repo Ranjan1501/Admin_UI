@@ -35,6 +35,7 @@ function UsersList() {
         setUsers(data);
         console.log(data);
       })
+      // error handling
       .catch((err) => {
         console.log("Error:", err);
       });
@@ -50,7 +51,9 @@ function UsersList() {
   };
 
   // Edit Data by Click
-  const editUserDetails = () => {};
+  const editUserDetails = () => {
+    
+  };
   console.log("PageVisited: ", pageVisited);
   return (
     <div className="container">
